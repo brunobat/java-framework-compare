@@ -6,7 +6,7 @@ import javax.ws.rs.core.Application;
 /**
  *
  */
-@ApplicationPath("/data")
+@ApplicationPath("/api")
 
 public class TomeeRestApplication extends Application {
 }

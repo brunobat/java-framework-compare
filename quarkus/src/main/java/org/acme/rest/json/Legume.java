@@ -1,8 +1,8 @@
 package org.acme.rest.json;
 
-import java.util.Objects;
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
+
+import java.util.Objects;
 
 @RegisterForReflection
 public class Legume {
