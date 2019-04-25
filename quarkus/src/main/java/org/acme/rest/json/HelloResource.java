@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
  */
 @Path("/hello")
 @Singleton
-public class HelloController {
+public class HelloResource {
 
     @GET
     public String sayHello() {
