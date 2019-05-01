@@ -16,9 +16,6 @@ import java.util.Set;
 @Consumes(MediaType.APPLICATION_JSON)
 public class FruitResource {
 
-//    @Inject
-//    private EntityManager em;
-
     private Set<Fruit> fruits = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
 
     public FruitResource() {

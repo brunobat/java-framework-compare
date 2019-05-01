@@ -2,11 +2,15 @@ package org.acme.rest.json;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @RegisterForReflection
+@Entity
 public class Legume {
 
+    @Id
     private String name;
 
     private String description;
@@ -14,7 +18,8 @@ public class Legume {
     public Legume() {
     }
 
-    public Legume(String name, String description) {
+    public Legume(String name,
+                  String description) {
         this.name = name;
         this.description = description;
     }

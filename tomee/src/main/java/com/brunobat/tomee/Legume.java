@@ -1,9 +1,13 @@
 package com.brunobat.tomee;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Legume {
 
+    @Id
     private String name;
 
     private String description;

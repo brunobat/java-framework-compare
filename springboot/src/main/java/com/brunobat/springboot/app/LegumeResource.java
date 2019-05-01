@@ -2,23 +2,29 @@ package com.brunobat.springboot.app;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Set;
 
 @RestController
 public class LegumeResource {
 
-    private Set<Legume> legumes = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
+    @PersistenceContext()
+    private EntityManager manager;
 
-    public LegumeResource() {
-        legumes.add(new Legume("Carrot", "Root vegetable, usually orange"));
-        legumes.add(new Legume("Zucchini", "Summer squash"));
+    @PostMapping
+    @Transactional
+    public ResponseEntity provision() {
+        manager.merge(new Legume("Carrot", "Root vegetable, usually orange"));
+        manager.merge(new Legume("Zucchini", "Summer squash"));
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/legumes")
@@ -28,7 +34,7 @@ public class LegumeResource {
             }
     )
     public Collection<Legume> list() {
-        return legumes;
+        return manager.createQuery("SELECT l FROM Legume l").getResultList();
     }
 
     public Collection<Legume> fallback() {
