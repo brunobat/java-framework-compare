@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tomee>
+    <Resource id="test" type="DataSource">
+        JdbcDriver  org.postgresql.Driver
+        JdbcUrl jdbc:postgresql://localhost:5432/test
+        JtaManaged true
+        UserName postgres
+        Password pass
+    </Resource>
+</tomee>
