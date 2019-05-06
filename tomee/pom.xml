@@ -88,6 +88,10 @@
             <configuration>
               <context>ROOT</context>
               <tomeeClassifier>microprofile</tomeeClassifier>
+              <config>${project.basedir}/src/main/tomee/conf</config>
+              <libs>
+                <lib>org.postgresql:postgresql:LATEST</lib>
+              </libs>
               <systemVariables>
                 <mp.jwt.verify.publickey.location>/publicKey.pem</mp.jwt.verify.publickey.location>
               </systemVariables>

@@ -27,8 +27,8 @@
 
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
         </properties>
     </persistence-unit>
 </persistence>
