@@ -14,6 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
 
 import static javax.persistence.PersistenceContextType.TRANSACTION;
 import static javax.ws.rs.core.Response.Status.CREATED;
@@ -42,7 +43,7 @@ public class LegumeResource {
         return Response.ok(manager.createQuery("SELECT l FROM Legume l").getResultList()).build();
     }
 
-    public String fallback() {
-        return "Fallback answer due to timeout";
+    public Response fallback() {
+        return Response.ok(Arrays.asList(new Legume("Broccoli", "This is the default legume, mate"))).build();
     }
 }
